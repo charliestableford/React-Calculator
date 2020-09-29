@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
-import Results from './components/Results';
-import KeyInput from './components/KeyInput';
+import ResultsComponent from './components/ResultsComponent';
+import KeyInputComponent from './components/KeyInputComponent';
 
-class App extends Component {
+class App extends React.Component {
   constructor(){
     super();
 
@@ -35,18 +35,28 @@ onClick = button => {
   
 // calculate
   calculate = () => {
-      try {
-          this.setState({
-              // eslint-disable-next-line
-              result: (eval(this.state.result) || "" ) + ""
-          })
-      } catch (e) {
-          this.setState({
-              result: "error"
-          })
+    var checkResult = ''
+    if(this.state.result.includes('--')){
+        checkResult = this.state.result.replace('--','+')
+    }
 
-      }
-  };
+    else {
+        checkResult = this.state.result
+    }
+
+    try {
+        this.setState({
+            // eslint-disable-next-line
+            result: (eval(checkResult) || "" ) + ""
+        })
+    } catch (e) {
+        this.setState({
+            result: "error"
+        })
+
+    }
+};
+
 
   // reset to zero
   reset = () => {
@@ -62,17 +72,18 @@ onClick = button => {
       })
   };
 
-  render() {
-      return (
+  render(){
+      return(
           <div>
               <div className="calculator-body">
                   <h1>Simple Calculator</h1>
-                  <Results result={this.state.result}/>
-                  <KeyInput onClick={this.onClick}/>
+                  <ResultsComponent result={this.state.result}/>
+                  <KeyInputComponent onClick={this.onClick}/>
               </div>
           </div>
       );
   }
 }
+
 
 export default App;
