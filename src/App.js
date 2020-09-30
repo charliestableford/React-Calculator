@@ -18,11 +18,12 @@ onClick = button => {
         this.calculate()
     }
 
-    else if(button === "C"){
-        this.reset()
+    else if(button === "back"){
+        this.back()
     }
-    else if(button === "CE"){
-        this.backspace()
+
+    else if(button === "clear"){
+        this.reset()
     }
 
     else {
@@ -47,14 +48,15 @@ onClick = button => {
     try {
         this.setState({
             // eslint-disable-next-line
-            result: (eval(checkResult) || "" ) + ""
+            result: (eval(checkResult))
+            
         })
     } catch (e) {
         this.setState({
             result: "error"
         })
-
     }
+    // this.reset();
 };
 
 
@@ -65,8 +67,8 @@ onClick = button => {
       })
   };
 
-  // clear last character
-  backspace = () => {
+  //backspace
+  back = () => {
       this.setState({
           result: this.state.result.slice(0, -1)
       })
@@ -75,8 +77,7 @@ onClick = button => {
   render(){
       return(
           <div>
-              <div className="calculator-body">
-                  <h1>Simple Calculator</h1>
+              <div className="calc">
                   <ResultsComponent result={this.state.result}/>
                   <KeyInputComponent onClick={this.onClick}/>
               </div>
