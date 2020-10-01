@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-class ResultsComponent extends React.Component {
+function ResultsComponent(){
 
-    render(){
-        let {result} = this.props;
+    return(
+        let result = useState("");
         return (
             <div className = "wrapper">
                 <div className = "leftRes"></div>
             <div className = "result">
                 <p>{result}</p>
             </div>
-              <div className = "rightRes"></div>
             </div>
         );
     }

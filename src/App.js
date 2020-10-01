@@ -1,90 +1,102 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ResultsComponent from './components/ResultsComponent';
 import KeyInputComponent from './components/KeyInputComponent';
 
-class App extends React.Component {
-  constructor(){
-    super();
+function App() {
+    // setting a new state variable
+    let [result, setVal] = useState("");
 
-    this.state = {
-        result: ""
-    }
-}
 
 onClick = button => {
 
     if(button === "="){
-        this.calculate()
+       handleClick()
     }
 
     else if(button === "back"){
-        this.back()
+        back()
+    }
+
+    else if(button === "sq"){
+        squareRt()
     }
 
     else if(button === "clear"){
-        this.reset()
+        reset()
+    }
+
+    else if(button === "round"){
+        round()
     }
 
     else {
-        this.setState({
-            result: this.state.result + button
+        setVal({
+            result: result + button
         })
     }
 };
 
   
 // calculate
-  calculate = () => {
-    var checkResult = ''
-    if(this.state.result.includes('--')){
-        checkResult = this.state.result.replace('--','+')
-    }
+  handleClick = () => {
+    checkResult = ''
+    checkResult = result
 
-    else {
-        checkResult = this.state.result
-    }
-
+    // does all error handling happen with ty and catch?
     try {
-        this.setState({
+        setVal({
             // eslint-disable-next-line
-            result: (eval(checkResult))
-            
+            result: (eval(checkResult)) 
         })
     } catch (e) {
-        this.setState({
+        setVal({
             result: "error"
         })
     }
-    // this.reset();
 };
 
 
   // reset to zero
   reset = () => {
-      this.setState({
+      setVal({
           result: ""
       })
   };
 
   //backspace
   back = () => {
-      this.setState({
-          result: this.state.result.slice(0, -1)
+      setVal({
+          result: slice(0, -1)
       })
   };
 
-  render(){
+  //square root
+  squareRt = () =>{
+      setVal({
+          result: Math.sqrt(result)
+      })
+  };
+
+  //round
+  round = () => {
+      setVal({
+          result: Math.round(result)
+      })
+  }
+
+//   render(){
       return(
           <div>
+              <div className="title">TI-180 Calculator excercise</div>
               <div className="calc">
-                  <ResultsComponent result={this.state.result}/>
-                  <KeyInputComponent onClick={this.onClick}/>
+                  <ResultsComponent result={result}/>
+                  <KeyInputComponent onClick={onClick}/>
               </div>
           </div>
       );
   }
-}
+// }
 
 
 export default App;
