@@ -5,85 +5,84 @@ import KeyInputComponent from './components/KeyInputComponent';
 
 function App() {
     // setting a new state variable
-    let [result, setVal] = useState("");
+    const [result, setVal] = useState("");
 
 
 onClick = button => {
+//     if(button === "="){
+//        handleClick()
+//     }
 
-    if(button === "="){
-       handleClick()
-    }
+//     else if(button === "back"){
+//         back()
+//     }
 
-    else if(button === "back"){
-        back()
-    }
+//     else if(button === "sq"){
+//         squareRt()
+//     }
 
-    else if(button === "sq"){
-        squareRt()
-    }
+//     else if(button === "clear"){
+//         reset()
+//     }
 
-    else if(button === "clear"){
-        reset()
-    }
+//     else if(button === "round"){
+//         round()
+//     }
 
-    else if(button === "round"){
-        round()
-    }
-
-    else {
-        setVal({
-            result: result + button
-        })
-    }
+//     else {
+//         setVal({
+//             result: result + button
+//         })
+//     }
 };
 
   
 // calculate
-  handleClick = () => {
-    checkResult = ''
-    checkResult = result
+//   handleClick = () => {
+//     const checkResult = ''
+//     checkResult = result
 
-    // does all error handling happen with ty and catch?
-    try {
-        setVal({
-            // eslint-disable-next-line
-            result: (eval(checkResult)) 
-        })
-    } catch (e) {
-        setVal({
-            result: "error"
-        })
-    }
-};
+//     // does all error handling happen with ty and catch?
+//     try {
+//         setVal({
+//             // eslint-disable-next-line
+//             result: (eval(checkResult)) 
+//         })
+//     } catch (e) {
+//         setVal({
+//             result: "error"
+//         })
+//     }
+// };
 
 
   // reset to zero
-  reset = () => {
-      setVal({
-          result: ""
-      })
-  };
+//   reset = () => {
+//       setVal({
+//           result: ""
+//       })
+//   };
 
-  //backspace
-  back = () => {
-      setVal({
-          result: slice(0, -1)
-      })
-  };
+//   //backspace
+//   back = () => {
+//       setVal({
+//           result: slice(0, -1)
+//       })
+//   };
 
-  //square root
-  squareRt = () =>{
-      setVal({
-          result: Math.sqrt(result)
-      })
-  };
+//   //square root
+//   squareRt = () =>{
+//       setVal({
+//           result: Math.sqrt(result)
+//       })
+//   };
 
-  //round
-  round = () => {
-      setVal({
-          result: Math.round(result)
-      })
-  }
+//   //round
+//   round = () => {
+//       setVal({
+//           result: Math.round(result)
+//       })
+//   }
 
 //   render(){
       return(

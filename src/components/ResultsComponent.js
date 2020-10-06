@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-function ResultsComponent(){
+function ResultsComponent() {
 
-    return(
-        let result = useState("");
+    // render(){
+        let {result} = useState("");
         return (
             <div className = "wrapper">
                 <div className = "leftRes"></div>
@@ -13,6 +13,6 @@ function ResultsComponent(){
             </div>
         );
     }
-}
+// }
 
 export default ResultsComponent;
