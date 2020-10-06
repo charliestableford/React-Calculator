@@ -9,22 +9,22 @@ function App() {
 
     // function Button({ onClick }) {
      
-            onClick = button => {
+             const onClick = button => {
                 if (button === "=") {
                     handleClick();
                 }
 
                     else if(button === "back"){
-                        back()
+                        back();
                     }
                     else if(button === "sq"){
-                        squareRt()
+                        squareRt();
                     }
                     else if(button === "clear"){
-                        reset()
+                        reset();
                     }
                     else if(button === "round"){
-                        round()
+                        round();
                     }
                     else {
                         setVal({
@@ -36,8 +36,8 @@ function App() {
 
   
 // calculate
-  handleClick = () => {
-    const checkResult = ''
+  const handleClick = () => {
+    let checkResult = ''
     checkResult = result
 
     // does all error handling happen with ty and catch?
@@ -55,28 +55,28 @@ function App() {
 
 
 //   reset to zero
-  reset = () => {
+const reset = () => {
       setVal({
           result: ""
       })
   };
 
   //backspace
-  back = () => {
+  const back = () => {
       setVal({
-          result: slice(0, -1)
+          result: result.slice(0, -1)
       })
   };
 
   //square root
-  squareRt = () =>{
+  const squareRt = () =>{
       setVal({
           result: Math.sqrt(result)
       })
   };
 
   //round
-  round = () => {
+  const round = () => {
       setVal({
           result: Math.round(result)
       })

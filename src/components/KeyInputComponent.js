@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 function KeyInputComponent(){
     // there must be a better way to do this?
     // props return React elemtns describing what should appear on the screen.
-
+    const [setVal] = useState("");
         return (
             <div className = "buttons">
                 <button className ="operator" name="round" onClick={e => setVal(e.target.name)}>round</button>
