@@ -10,7 +10,9 @@ function App() {
   // function Button({ onClick }) {
 
   const onClick = (button) => {
-    if (button === "=") {
+    if (Number(button)) {
+      setResult(result + Number(button));
+    } else if (button === "=") {
       handleClick();
     } else if (button === "back") {
       back();
@@ -21,10 +23,10 @@ function App() {
     } else if (button === "round") {
       round();
     } else {
-      setResult({
-        result: result + button,
-      });
+      console.warn("that was not a registered key");
     }
+
+    console.log(result);
   };
   // }
 
