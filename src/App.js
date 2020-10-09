@@ -5,7 +5,7 @@ import KeyInputComponent from "./components/KeyInputComponent";
 
 function App() {
   // setting a new state variable
-  const [result, setVal] = useState("");
+  const [result, setResult] = useState(0);
 
   // function Button({ onClick }) {
 
@@ -21,7 +21,7 @@ function App() {
     } else if (button === "round") {
       round();
     } else {
-      setVal({
+      setResult({
         result: result + button,
       });
     }
@@ -35,12 +35,12 @@ function App() {
 
     // does all error handling happen with ty and catch?
     try {
-      setVal({
+      setResult({
         // eslint-disable-next-line
         result: eval(checkResult),
       });
     } catch (e) {
-      setVal({
+      setResult({
         result: "error",
       });
     }
@@ -48,43 +48,45 @@ function App() {
 
   //   reset to zero
   const reset = () => {
-    setVal({
+    setResult({
       result: "",
     });
   };
 
   //backspace
   const back = () => {
-    setVal({
+    setResult({
       result: result.slice(0, -1),
     });
   };
 
   //square root
   const squareRt = () => {
-    setVal({
+    setResult({
       result: Math.sqrt(result),
     });
   };
 
   //round
   const round = () => {
-    setVal({
+    setResult({
       result: Math.round(result),
     });
   };
 
-  //   render(){
   return (
     <div>
       <div className="title">TI-180 Calculator excercise</div>
       <div className="calc">
         <ResultsComponent result={result} />
-        <KeyInputComponent onClick={onClick} />
+        <KeyInputComponent
+          onClick={onClick}
+          result={result}
+          setResult={setResult}
+        />
       </div>
     </div>
   );
 }
-// }
 
 export default App;

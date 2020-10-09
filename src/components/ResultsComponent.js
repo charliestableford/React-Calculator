@@ -1,19 +1,12 @@
-import React, {useState} from 'react';
+import React from "react";
 
-function ResultsComponent() {
-
-    // render(){
-        const {result} = useState("");
-
-        return (
-            <div className = "wrapper">
-                <div className = "leftRes"></div>
-            <div className = "result">
-                <p>{result}</p>
-            </div>
-            </div>
-        );
-    }
-// }
+const ResultsComponent = ({ result }) => (
+  <div className="wrapper">
+    <div className="leftRes"></div>
+    <div className="result">
+      <p>{result}</p>
+    </div>
+  </div>
+);
 
 export default ResultsComponent;
