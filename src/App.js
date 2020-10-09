@@ -1,98 +1,90 @@
-import React, { useState } from 'react';
-import './App.css';
-import ResultsComponent from './components/ResultsComponent';
-import KeyInputComponent from './components/KeyInputComponent';
+import React, { useState } from "react";
+import "./App.css";
+import ResultsComponent from "./components/ResultsComponent";
+import KeyInputComponent from "./components/KeyInputComponent";
 
 function App() {
-    // setting a new state variable
-    const [result, setVal] = useState("");
+  // setting a new state variable
+  const [result, setVal] = useState("");
 
-    // function Button({ onClick }) {
-     
-             const onClick = button => {
-                if (button === "=") {
-                    handleClick();
-                }
+  // function Button({ onClick }) {
 
-                    else if(button === "back"){
-                        back();
-                    }
-                    else if(button === "sq"){
-                        squareRt();
-                    }
-                    else if(button === "clear"){
-                        reset();
-                    }
-                    else if(button === "round"){
-                        round();
-                    }
-                    else {
-                        setVal({
-                            result: result + button
-                        })
-                    }
-            };
-    // }
+  const onClick = (button) => {
+    if (button === "=") {
+      handleClick();
+    } else if (button === "back") {
+      back();
+    } else if (button === "sq") {
+      squareRt();
+    } else if (button === "clear") {
+      reset();
+    } else if (button === "round") {
+      round();
+    } else {
+      setVal({
+        result: result + button,
+      });
+    }
+  };
+  // }
 
-  
-// calculate
+  // calculate
   const handleClick = () => {
-    let checkResult = ''
-    checkResult = result
+    let checkResult = "";
+    checkResult = result;
 
     // does all error handling happen with ty and catch?
     try {
-        setVal({
-            // eslint-disable-next-line
-            result: (eval(checkResult)) 
-        })
-    } catch (e) {
-        setVal({
-            result: "error"
-        })
-    }
-};
-
-
-//   reset to zero
-const reset = () => {
       setVal({
-          result: ""
-      })
+        // eslint-disable-next-line
+        result: eval(checkResult),
+      });
+    } catch (e) {
+      setVal({
+        result: "error",
+      });
+    }
+  };
+
+  //   reset to zero
+  const reset = () => {
+    setVal({
+      result: "",
+    });
   };
 
   //backspace
   const back = () => {
-      setVal({
-          result: result.slice(0, -1)
-      })
+    setVal({
+      result: result.slice(0, -1),
+    });
   };
 
   //square root
-  const squareRt = () =>{
-      setVal({
-          result: Math.sqrt(result)
-      })
+  const squareRt = () => {
+    setVal({
+      result: Math.sqrt(result),
+    });
   };
 
   //round
   const round = () => {
-      setVal({
-          result: Math.round(result)
-      })
-  }
+    setVal({
+      result: Math.round(result),
+    });
+  };
 
-//   render(){
-      return(
-          <div>
-              <div className="title">TI-180 Calculator excercise</div>
-              <div className="calc">
-                  <ResultsComponent result={result}/>
-                  <KeyInputComponent onClick={onClick}/>
-              </div>
-          </div>
-      );
-  }
+  //   render(){
+  return (
+    <div>
+      <div className="title">TI-180 Calculator excercise</div>
+      <div className="calc">
+        <ResultsComponent result={result} />
+        <KeyInputComponent onClick={onClick} />
+      </div>
+    </div>
+  );
+}
 // }
 
 export default App;
