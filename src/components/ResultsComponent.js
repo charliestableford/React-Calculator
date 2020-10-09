@@ -3,7 +3,8 @@ import React, {useState} from 'react';
 function ResultsComponent() {
 
     // render(){
-        let {result} = useState("");
+        const {result} = useState("");
+
         return (
             <div className = "wrapper">
                 <div className = "leftRes"></div>
